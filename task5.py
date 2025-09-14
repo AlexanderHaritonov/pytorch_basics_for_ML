@@ -36,7 +36,7 @@ print(f'FPR: {fpr:.4f}')
 print(f'Precision: {precision:.4f}')
 print(f'F1-score: {f1_score:.4f}')
 
-// compute fpr and tpr per threshold value - in a loop
+# compute fpr and tpr per threshold value - in a loop
 import numpy as np
 import matplotlib.pyplot as plt
 tpr_list, fpr_list = [],[]
@@ -69,3 +69,4 @@ plt.legend()
 plt.grid(True)
 
 plt.show()
+
