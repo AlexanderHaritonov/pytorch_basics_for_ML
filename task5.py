@@ -36,13 +36,14 @@ print(f'FPR: {fpr:.4f}')
 print(f'Precision: {precision:.4f}')
 print(f'F1-score: {f1_score:.4f}')
 
+// compute fpr and tpr per threshold value - in a loop
 import numpy as np
 import matplotlib.pyplot as plt
 tpr_list, fpr_list = [],[]
 for thresh in torch.arange(0, 1.05, 0.05):
     TP, TN, FP, FN = confusion_matrix(test_predictions, threshold=thresh.item())
-    tpr = TP / actual_positive_cnt if actual_positive_cnt > 0 else 0.0
-    fpr = FP / actual_negative_cnt if actual_negative_cnt > 0 else 0.0
+    tpr = float(TP) / actual_positive_cnt if actual_positive_cnt > 0 else 0.0
+    fpr = float(FP) / actual_negative_cnt if actual_negative_cnt > 0 else 0.0
     tpr_list.append(tpr)
     fpr_list.append(fpr)
 
@@ -66,4 +67,5 @@ plt.ylabel('True Positive Rate (Recall)')
 plt.title('ROC Curve')
 plt.legend()
 plt.grid(True)
+
 plt.show()
